@@ -2,6 +2,16 @@
 
 [cccskills](https://cccskills.com)（日本語で探せる Agent Skills マーケット）が作っている Agent Skills です。Claude Code・Codex CLI など、Agent Skills に対応したエージェントで使えます。
 
+### セキュリティ
+
+| スキル | できること |
+| --- | --- |
+| [skill-security-audit](skills/skill-security-audit/SKILL.md) | スキルやエージェント設定（CLAUDE.md・フック・MCP 設定）を、入れる前・開く前に読むだけで検査する。見えない文字の隠し命令・認証情報の持ち出し・リバースシェルなどを見つける |
+| [npm-supply-chain-check](skills/npm-supply-chain-check/SKILL.md) | npm のサプライチェーン攻撃への備えを点検する。ロックファイルの全パッケージについて、公開からの日数とインストールスクリプトを調べ、直すべき設定を示す |
+| [incident-first-response-jp](skills/incident-first-response-jp/SKILL.md) | 情報漏えい・ランサムウェア被害の初動を整理し、個人情報保護委員会への報告の期限と項目、公表文・本人への通知文の下書きを作る |
+
+### 仕事・スキル作り
+
 | スキル | できること |
 | --- | --- |
 | [skill-md-review](skills/skill-md-review/SKILL.md) | SKILL.md を cccskills の客観評価と同じ 4 項目（指示の明確さ・手順の具体性・安全面・導入のしやすさ）で A/B/C 採点し、直し方を出す |
@@ -11,6 +21,9 @@
 ## 入れ方
 
 ```bash
+npx skills add https://github.com/cccskills/skills --skill skill-security-audit
+npx skills add https://github.com/cccskills/skills --skill npm-supply-chain-check
+npx skills add https://github.com/cccskills/skills --skill incident-first-response-jp
 npx skills add https://github.com/cccskills/skills --skill skill-md-review
 npx skills add https://github.com/cccskills/skills --skill cccskills-find
 npx skills add https://github.com/cccskills/skills --skill jp-business-mail
@@ -20,7 +33,9 @@ npx skills add https://github.com/cccskills/skills --skill jp-business-mail
 
 ## 安全面
 
-- `skill-md-review` と `jp-business-mail` は、外部への送信もコマンドの実行もしません。
+- `skill-md-review`・`jp-business-mail`・`incident-first-response-jp` は、外部への送信もコマンドの実行もしません。
+- `skill-security-audit` の検査スクリプトは、標準ライブラリだけで動き、対象を読むだけです（実行・送信をしません）。
+- `npm-supply-chain-check` の検査スクリプトは、`registry.npmjs.org` からパッケージの公開情報を取得するだけです。インストールやスクリプトの実行はしません。
 - `cccskills-find` は、検索キーワードとスキルの slug だけを `cccskills.com` の公開 API に送ります。スキルを入れるコマンドは、ユーザーが了承してから実行します。
 
 ## リンク
