@@ -18,6 +18,12 @@
 | [cccskills-find](skills/cccskills-find/SKILL.md) | やりたい作業に合うスキルを cccskills の公開 API で探し、実行スコア・安全面・ライセンスで比べて、入れるコマンドまで案内する |
 | [jp-business-mail](skills/jp-business-mail/SKILL.md) | 日本語のビジネスメールを、場面と相手に合わせて書く・直す。敬語の誤りを直した理由も示す |
 
+### 創作
+
+| スキル | できること |
+| --- | --- |
+| [charatone](skills/charatone/SKILL.md) | キャラクターの台詞の「声」を設計・点検する。語尾・一人称・呼び方・相づちを人物ごとに決め、「〜だ。」ばかりの台詞（AI が書いた台本に多い）を直す。話者ごとの語尾の偏りを数える点検スクリプト付き |
+
 ## 入れ方
 
 ```bash
@@ -27,6 +33,7 @@ npx skills add https://github.com/cccskills/skills --skill incident-first-respon
 npx skills add https://github.com/cccskills/skills --skill skill-md-review
 npx skills add https://github.com/cccskills/skills --skill cccskills-find
 npx skills add https://github.com/cccskills/skills --skill jp-business-mail
+npx skills add https://github.com/cccskills/skills --skill charatone
 ```
 
 手で入れるなら、`skills/<name>/` のフォルダを `~/.claude/skills/`（Claude Code）にコピーします。
@@ -36,6 +43,7 @@ npx skills add https://github.com/cccskills/skills --skill jp-business-mail
 - `skill-md-review`・`jp-business-mail`・`incident-first-response-jp` は、外部への送信もコマンドの実行もしません。
 - `skill-security-audit` の検査スクリプトは、標準ライブラリだけで動き、対象を読むだけです（実行・送信をしません）。
 - `npm-supply-chain-check` の検査スクリプトは、`registry.npmjs.org` からパッケージの公開情報を取得するだけです。インストールやスクリプトの実行はしません。
+- `charatone` の点検スクリプトは、標準ライブラリだけで動き、台本ファイルを読むだけです。
 - `cccskills-find` は、検索キーワードとスキルの slug だけを `cccskills.com` の公開 API に送ります。スキルを入れるコマンドは、ユーザーが了承してから実行します。
 
 ## リンク
