@@ -18,6 +18,7 @@
 | [skill-md-review](skills/skill-md-review/SKILL.md) | SKILL.md を cccskills の客観評価と同じ 4 項目（指示の明確さ・手順の具体性・安全面・導入のしやすさ）で A/B/C 採点し、直し方を出す |
 | [cccskills-find](skills/cccskills-find/SKILL.md) | やりたい作業に合うスキルを cccskills の公開 API で探し、実行スコア・安全面・ライセンスで比べて、入れるコマンドまで案内する |
 | [jp-business-mail](skills/jp-business-mail/SKILL.md) | 日本語のビジネスメールを、場面と相手に合わせて書く・直す。敬語の誤りを直した理由も示す |
+| [jp-hook-review](skills/jp-hook-review/SKILL.md) | 日本語の見出し・投稿の1行目・メール件名・動画の冒頭・カルーセルの1枚目を5項目で採点し、事実を変えずに直した案を出す。誇張や事実の言い換えは点数と別に止める |
 
 ### 創作
 
@@ -35,6 +36,7 @@ npx skills add https://github.com/cccskills/skills --skill incident-first-respon
 npx skills add https://github.com/cccskills/skills --skill skill-md-review
 npx skills add https://github.com/cccskills/skills --skill cccskills-find
 npx skills add https://github.com/cccskills/skills --skill jp-business-mail
+npx skills add https://github.com/cccskills/skills --skill jp-hook-review
 npx skills add https://github.com/cccskills/skills --skill charatone
 ```
 
@@ -42,7 +44,7 @@ npx skills add https://github.com/cccskills/skills --skill charatone
 
 ## 安全面
 
-- `skill-md-review`・`jp-business-mail`・`incident-first-response-jp` は、外部への送信もコマンドの実行もしません。
+- `skill-md-review`・`jp-business-mail`・`jp-hook-review`・`incident-first-response-jp` は、外部への送信もコマンドの実行もしません。
 - `skill-security-audit` の検査スクリプトは、標準ライブラリだけで動き、対象を読むだけです（実行・送信をしません）。
 - `npm-supply-chain-check` の検査スクリプトは、`registry.npmjs.org` からパッケージの公開情報を取得するだけです。インストールやスクリプトの実行はしません。
 - `pc-security-checkup` の点検スクリプトは、標準ライブラリだけで動き、OS 標準のコマンドを読み取りの用途で呼ぶだけです（削除・設定の変更・プロセスの停止・送信をしません）。ウイルス対策ソフトの代わりにはなりません。
@@ -58,3 +60,5 @@ npx skills add https://github.com/cccskills/skills --skill charatone
 ## ライセンス
 
 MIT
+
+`jp-hook-review` は [nicepkg/ai-workflow](https://github.com/nicepkg/ai-workflow) の hook-stack-evaluator（MIT）を元にしています。詳細は [NOTICE.md](skills/jp-hook-review/NOTICE.md) を見てください。
